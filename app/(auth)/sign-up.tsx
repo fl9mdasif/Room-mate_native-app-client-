@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { TextInput, Button, View, Text, StyleSheet, ScrollView } from 'react-native'
+import { TextInput, Button, View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { useSignUp } from '@clerk/clerk-expo'
 import { useRouter } from 'expo-router'
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function Page() {
     const { isLoaded, signUp, setActive } = useSignUp()
@@ -57,7 +58,11 @@ export default function Page() {
     }
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <LinearGradient
+            colors={['#30e9ff', '#0d0551']} // Gradient colors
+            start={{ x: 0, y: 0 }} // Gradient start position
+            end={{ x: 1, y: 1 }}   // Gradient end position
+            style={styles.container}>
             <View style={styles.formContainer}>
                 <Text style={styles.title}>Create Your Account</Text>
 
@@ -95,7 +100,9 @@ export default function Page() {
                             style={styles.input}
                         />
 
-                        <Button title="Sign Up" onPress={onSignUpPress} color="#007BFF" />
+                        <TouchableOpacity style={styles.button} onPress={onSignUpPress}>
+                            <Text style={styles.buttonText}>SIGN UP</Text>
+                        </TouchableOpacity>
                     </>
                 )}
 
@@ -107,16 +114,19 @@ export default function Page() {
                             onChangeText={(code) => setCode(code)}
                             style={styles.input}
                         />
-                        <Button title="Verify Email" onPress={onPressVerify} color="#28a745" />
+                        <Button title="Verify Email" onPress={onPressVerify} color="#0d0551" />
                     </>
                 )}
 
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>Already have an account?</Text>
-                    <Button title="Sign In" onPress={() => router.push('/sign-in')} color="#6c757d" />
+
+                    <TouchableOpacity onPress={() => router.push('/(auth)/sign-in')}>
+                        <Text style={styles.buttonText}>SIGN IN</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
-        </ScrollView>
+        </LinearGradient>
     )
 }
 
@@ -131,7 +141,7 @@ const styles = StyleSheet.create({
         width: '100%',
         maxWidth: 400,
         alignSelf: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: "#4b70a8e7",
         padding: 30,
         borderRadius: 8,
         shadowColor: '#000',
@@ -145,7 +155,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         textAlign: 'center',
         marginBottom: 20,
-        color: '#333',
+        color: '#ffffff',
     },
     input: {
         height: 45,
@@ -164,7 +174,19 @@ const styles = StyleSheet.create({
     },
     footerText: {
         fontSize: 16,
-        color: '#6c757d',
+        color: '#ffffff',
         marginBottom: 10,
+    },
+    button: {
+        backgroundColor: "#0d0551",
+        paddingVertical: 15,
+        borderRadius: 8,
+        alignItems: "center",
+        marginBottom: 20,
+    },
+    buttonText: {
+        color: "#ff7d13",
+        fontSize: 16,
+        fontWeight: "600",
     },
 })

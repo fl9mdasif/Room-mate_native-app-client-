@@ -2,6 +2,7 @@ import { useSignIn } from '@clerk/clerk-expo'
 import { Link, useRouter } from 'expo-router'
 import { Text, TextInput, Button, View, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function Page() {
     const { signIn, setActive, isLoaded } = useSignIn()
@@ -35,7 +36,12 @@ export default function Page() {
     }, [isLoaded, emailAddress, password])
 
     return (
-        <View style={styles.container}>
+        <LinearGradient
+            colors={['#30e9ff', '#0d0551']} // Gradient colors
+            start={{ x: 0, y: 0 }} // Gradient start position
+            end={{ x: 1, y: 1 }}   // Gradient end position
+            style={styles.container}>
+
             <View style={styles.formContainer}>
                 <Text style={styles.heading}>Sign In</Text>
 
@@ -70,7 +76,7 @@ export default function Page() {
                     </Link>
                 </View>
             </View>
-        </View>
+        </LinearGradient>
     );
 };
 
@@ -81,14 +87,15 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#f5f5f5",
         paddingHorizontal: 20,
+        // marginTop: -160
     },
     formContainer: {
         width: "100%",
         maxWidth: 400,
         padding: 20,
-        backgroundColor: "#fff",
+        backgroundColor: "#4b70a8e7",
+
         borderRadius: 8,
         shadowColor: "#000",
         shadowOpacity: 0.1,
@@ -99,7 +106,7 @@ const styles = StyleSheet.create({
     heading: {
         fontSize: 28,
         fontWeight: "bold",
-        color: "#333",
+        color: "#ffffff",
         textAlign: "center",
         marginBottom: 30,
     },
@@ -110,10 +117,10 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         paddingLeft: 15,
         marginBottom: 15,
-        backgroundColor: "#f9f9f9",
+        backgroundColor: "#dbe9f1de",
     },
     button: {
-        backgroundColor: "#4a90e2",
+        backgroundColor: "#0d0551",
         paddingVertical: 15,
         borderRadius: 8,
         alignItems: "center",
@@ -130,11 +137,12 @@ const styles = StyleSheet.create({
     },
     footerText: {
         fontSize: 14,
-        color: "#777",
+        color: "#ffffff",
     },
     linkText: {
         fontSize: 16,
-        color: "#4a90e2",
+        color: "#ff7d13",
+
         fontWeight: "500",
         marginTop: 5,
     },
