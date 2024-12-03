@@ -7,9 +7,10 @@ import {
 import DemoCards from "../flats/Flats";
 import HomeForm from "../shared/forms/homeForm";
 import HomeFilter from "../shared/filter/homeFilter";
+import Flats from "../flats/Flats";
+import Services from "../services/services";
 
 const HomePage = () => {
-
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -17,11 +18,17 @@ const HomePage = () => {
             {/* home input */}
             <HomeForm />
 
+            {/* our services  */}
+            <View>
+                <Services />
+            </View>
+
             {/* HomeFilter  */}
             <HomeFilter />
-            {/* DemoCards Component */}
+
+            {/* Flat Cards Component */}
             <View style={styles.demoCardsContainer}>
-                <DemoCards />
+                <Flats />
             </View>
 
 

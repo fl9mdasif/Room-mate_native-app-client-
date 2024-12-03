@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity } from "react-native";
 
-const DemoCards = () => {
+const Flats = () => {
     // Sample data for flats, rooms, and spaces
     const demoData = [
         {
@@ -9,7 +9,7 @@ const DemoCards = () => {
             title: "2BHK Apartment",
             location: "Banani, Dhaka",
             price: "৳25,000/month",
-            image: require("../../assets/images/room-images/room-1.jpg"), // Replace with your image path
+            image: require("../../assets/images/room-images/room-4.jpg"),
         },
         {
             id: "2",
@@ -30,7 +30,8 @@ const DemoCards = () => {
             title: "3BHK Apartment",
             location: "Gulshan, Dhaka",
             price: "৳40,000/month",
-            image: require("../../assets/images/room-images/room-4.jpg"),
+            image: require("../../assets/images/room-images/room-1.jpg"),
+
         },
     ];
 
@@ -57,19 +58,23 @@ const DemoCards = () => {
     );
 };
 
-export default DemoCards;
+export default Flats;
 
 const styles = StyleSheet.create({
     container: {
         margin: 0,
-        padding: 7,
+        padding: 10,
         width: 390,
-        flexDirection: "row", // Display items in a row
-        flexWrap: "wrap",
+        flex: 1,
+        // flexDirection: "row", // Display items in a row
+        // flexWrap: "wrap",
 
     },
     sectionTitle: {
+
         fontSize: 20,
+        paddingTop: 20,
+        paddingBottom: 10,
         fontWeight: "bold",
         color: "#0d0551",
         marginBottom: 10,

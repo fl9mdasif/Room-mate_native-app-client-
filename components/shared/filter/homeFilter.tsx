@@ -50,6 +50,8 @@ const styles = StyleSheet.create({
     },
     sectionTitle: {
         fontSize: 20,
+        paddingTop: 20,
+        paddingBottom: 10,
         fontWeight: "bold",
         color: "#0d0551",
         marginBottom: 10,
