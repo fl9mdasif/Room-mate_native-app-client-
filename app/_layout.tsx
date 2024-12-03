@@ -18,12 +18,12 @@ export default function RootLayout() {
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
 
-  const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY
+  const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
   if (!publishableKey) {
     throw new Error(
-      'Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env',
-    )
+      'Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env'
+    );
   }
 
   useEffect(() => {
@@ -38,15 +38,12 @@ export default function RootLayout() {
 
   return (
     <ClerkProvider publishableKey={publishableKey}>
-
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack>
+        <Stack style={{ flex: 1 }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
-
-          <Footer />
+          {/* <Footer /> */}
         </Stack>
-
       </ThemeProvider>
     </ClerkProvider>
   );

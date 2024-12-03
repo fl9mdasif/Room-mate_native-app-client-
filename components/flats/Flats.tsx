@@ -39,7 +39,7 @@ const DemoCards = () => {
             <Text style={styles.sectionTitle}>Available Spaces</Text>
             <FlatList
                 data={demoData}
-
+                horizontal
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
