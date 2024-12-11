@@ -13,10 +13,10 @@ const FirstPage = () => {
     const router = useRouter();
 
     useEffect(() => {
-        if (user) {
-            // If user is signed in, navigate to the Home Tab
-            router.replace("/(tabs)/contact");
-        }
+        // if (user) {
+        //     // If user is signed in, navigate to the Home Tab
+        //     router.replace("/(tabs)/contact");
+        // }
     }, [user]);
     console.log(user)
     return (

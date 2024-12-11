@@ -4,7 +4,6 @@ import {
     StyleSheet,
     ScrollView,
 } from "react-native";
-import DemoCards from "../flats/Flats";
 import HomeForm from "../shared/forms/homeForm";
 import HomeFilter from "../shared/filter/homeFilter";
 import Flats from "../flats/Flats";

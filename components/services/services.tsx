@@ -12,6 +12,7 @@ type RoomData = {
 
 const Flats = () => {
     // Sample data for services with icons
+
     const demoData: RoomData[] = [
         {
             id: "1",
@@ -91,7 +92,8 @@ export default Flats;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 10,
+        // width: '100%',
+        // padding: 10,
         backgroundColor: "#f5f5f5",
     },
     sectionTitle: {

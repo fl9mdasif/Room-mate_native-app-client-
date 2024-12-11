@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { TextInput, Button, View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
-import { useSignUp } from '@clerk/clerk-expo'
+import { useSignUp, useUser } from '@clerk/clerk-expo'
 import { useRouter } from 'expo-router'
 import { LinearGradient } from 'expo-linear-gradient'
+// import { createUser } from '@/api/userApi'
 
 export default function Page() {
     const { isLoaded, signUp, setActive } = useSignUp()
@@ -14,6 +15,9 @@ export default function Page() {
     const [password, setPassword] = React.useState('')
     const [pendingVerification, setPendingVerification] = React.useState(false)
     const [code, setCode] = React.useState('')
+
+    // const { isSignedIn, user } = useUser();
+    // const userEmail = user?.primaryEmailAddress?.emailAddress;
 
     const onSignUpPress = async () => {
         if (!isLoaded) {
@@ -49,6 +53,8 @@ export default function Page() {
             if (completeSignUp.status === 'complete') {
                 await setActive({ session: completeSignUp.createdSessionId })
                 router.replace('/')
+                // await createUser(user?.fullName as string, userEmail as string)
+
             } else {
                 console.error("Verification failed:", completeSignUp)
             }

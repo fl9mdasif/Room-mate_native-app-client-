@@ -6,7 +6,7 @@ const HomeForm = () => {
 
 
     return (
-        <div>
+        <View>
 
             <ImageBackground
                 source={require("../../../assets/images/room-bg.png")}
@@ -44,7 +44,7 @@ const HomeForm = () => {
                 </View>
             </ImageBackground>
 
-        </div>
+        </View>
     )
 }
 

@@ -6,7 +6,7 @@ const HomeFilter = () => {
 
     return (
 
-        <div>
+        <View>
 
             {/* Popular Places Section */}
             <View style={styles.popularPlacesContainer}>
@@ -34,7 +34,7 @@ const HomeFilter = () => {
             </View>
 
 
-        </div>
+        </View>
     )
 }
 
@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
 
     popularPlacesContainer: {
         flex: 1,
-        marginTop: 20,
-        paddingHorizontal: 20,
+        // marginTop: 20,
+        // paddingHorizontal: 20,
     },
     sectionTitle: {
         fontSize: 20,

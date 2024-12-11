@@ -1,39 +1,42 @@
-import { useSignIn } from '@clerk/clerk-expo'
-import { Link, useRouter } from 'expo-router'
-import { Text, TextInput, Button, View, TouchableOpacity, StyleSheet } from 'react-native'
-import React from 'react'
-import { LinearGradient } from 'expo-linear-gradient'
+import { useSignIn, useUser } from '@clerk/clerk-expo';
+import { Link, useRouter } from 'expo-router';
+import { Text, TextInput, Button, View, StyleSheet, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { createUser } from '@/api/userApi';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Page() {
-    const { signIn, setActive, isLoaded } = useSignIn()
-    const router = useRouter()
+    const { signIn, setActive, isLoaded } = useSignIn();
+    const { user } = useUser(); // Get user info from Clerk
+    const router = useRouter();
 
-    const [emailAddress, setEmailAddress] = React.useState('')
-    const [password, setPassword] = React.useState('')
+    const [emailAddress, setEmailAddress] = React.useState('');
+    const [password, setPassword] = React.useState('');
 
     const onSignInPress = React.useCallback(async () => {
-        if (!isLoaded) {
-            return
-        }
+        if (!isLoaded) return;
 
         try {
             const signInAttempt = await signIn.create({
                 identifier: emailAddress,
                 password,
-            })
+            });
+
+            console.log('Sign-in response:', signInAttempt);
 
             if (signInAttempt.status === 'complete') {
-                await setActive({ session: signInAttempt.createdSessionId })
-                router.replace('/')
+                // Set active session
+                await setActive({ session: signInAttempt.createdSessionId });
+
             } else {
-                // See https://clerk.com/docs/custom-flows/error-handling
-                // for more info on error handling
-                console.error(JSON.stringify(signInAttempt, null, 2))
+                console.error('Sign-in not completed:', JSON.stringify(signInAttempt, null, 2));
             }
         } catch (err: any) {
-            console.error(JSON.stringify(err, null, 2))
+            console.error('Sign-in error:', JSON.stringify(err, null, 2));
         }
-    }, [isLoaded, emailAddress, password])
+    }, [isLoaded, emailAddress, password, user]);
+
+
 
     return (
         <LinearGradient
