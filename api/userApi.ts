@@ -26,7 +26,9 @@ export const getFavoriteFlats = async (email: string): Promise<User> => {
 };
 
 
-export const removeFavoriteFlat = async (userId: string, flatId: string): Promise<string[]> => {
-    const response = await axiosInstance.post('/users/removeFromFavorites', { userId, flatId });
-    return response.data.favoriteFlats; // Returns updated favorite flats
+export const removeFromFavorite = async (email: string, flatId: string): Promise<any> => {
+    const response = await axiosInstance.delete<{ user: User }>('/users/removeFromFavorites', {
+        data: { email, flatId }, // Pass the body data in the `data` property
+    });
+    return response.data; // Returns updated favorite flats
 };

@@ -39,4 +39,8 @@ export const getAllFlats = async (): Promise<Flat> => {
     const response = await axiosInstance.get(`/flats`);
     return response.data;
 };
+export const getSinglelFlat = async (id: string): Promise<Flat> => {
+    const response = await axiosInstance.get(`/flats/${id}`);
+    return response.data;
+};
 
